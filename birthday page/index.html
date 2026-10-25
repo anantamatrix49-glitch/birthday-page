@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Happy Birthday Manya Gupta ✨</title>
+    <meta name="description" content="A cinematic full-screen interactive birthday celebration for Manya Gupta">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Caveat:wght@600;700&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Canvas for Ambient Golden Particles & Stars -->
+    <canvas id="ambientCanvas" class="ambient-canvas" aria-hidden="true"></canvas>
+
+    <!-- Global Persistent Background Accents -->
+    <div class="ambient-glow glow-1" aria-hidden="true"></div>
+    <div class="ambient-glow glow-2" aria-hidden="true"></div>
+
+    <!-- MAIN VIEWPORT CONTAINER (100vh / 100dvh strictly contained) -->
+    <main class="app-viewport" id="appViewport">
+
+        <!-- ================= PERSISTENT TOP HEADER ================= -->
+        <header class="top-nav" aria-label="Experience controls">
+            <div class="top-nav-left">
+                <span class="monogram-badge">✨ M • 26 OCT</span>
+            </div>
+
+            <div class="top-nav-center">
+                <div class="page-counter-pill" id="pageCounterPill">
+                    <span id="currentPageNum">01</span>
+                    <span class="counter-sep">/</span>
+                    <span class="total-pages">07</span>
+                </div>
+            </div>
+
+            <div class="top-nav-right">
+                <!-- Persistent mini audio toggle -->
+                <button id="persistentMusicBtn" class="persistent-music-btn" title="Toggle Birthday Music" aria-label="Toggle Birthday Music">
+                    <span class="music-icon" id="persistentMusicIcon">🎵</span>
+                    <span class="music-label" id="persistentMusicLabel">Music</span>
+                    <span class="sound-wave" id="soundWave" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </span>
+                </button>
+            </div>
+        </header>
+
+        <!-- ================= SCENES CONTAINER ================= -->
+        <div class="scenes-wrapper" id="scenesWrapper">
+
+            <!-- ---------------------------------------------------------------- -->
+            <!-- PAGE 1 — THE SECRET INVITATION                                   -->
+            <!-- ---------------------------------------------------------------- -->
+            <section class="scene scene-1 active" id="scene-1" data-scene="1" aria-label="Page 1: The Secret Invitation">
+                <div class="scene-inner content-card">
+                    <div class="invitation-seal-wrapper">
+                        <div class="gold-seal-pulse" aria-hidden="true"></div>
+                        <div class="gold-wax-seal">
+                            <span class="seal-letter">M</span>
+                        </div>
+                    </div>
+
+                    <p class="eyebrow-tag"> CELEBRATION • FOR MANYA GUPTA</p>
+
+                    <h1 class="invitation-heading">
+                        You Have a Secret<br>
+                        <span class="gold-shimmer-text">Birthday Invitation</span>
+                    </h1>
+
+                    <p class="invitation-message">
+                        Some journeys begin quietly and grow into something truly rare and cherished.
+                        Someone who is endlessly grateful for your presence in their life has created a special moment just for you.
+                    </p>
+
+                    <div class="cta-action-area">
+                        <button class="btn-primary glow-button" id="btnOpenSurprise">
+                            <span>Open Your Surprise</span>
+                            <span class="btn-sparkle">✨</span>
+                        </button>
+                    </div>
+
+                    <p class="subtle-hint">Tap above to begin • Sound will be available inside</p>
+                </div>
+            </section>
+
+
+            <!-- ---------------------------------------------------------------- -->
+            <!-- PAGE 2 — THE BIRTHDAY REVEAL                                     -->
+            <!-- ---------------------------------------------------------------- -->
+            <section class="scene scene-2" id="scene-2" data-scene="2" aria-label="Page 2: The Birthday Reveal" inert>
+                <div class="scene-inner content-card reveal-card">
+                    <div class="sparkle-accent" aria-hidden="true">🎉 ✨ 🎈</div>
+
+                    <p class="eyebrow-tag reveal-tag">OCTOBER 26 • A VERY SPECIAL DAY</p>
+
+                    <h1 class="reveal-heading">
+                        HAPPY BIRTHDAY,<br>
+                        <span class="reveal-name-gradient">MANYA!</span>
+                    </h1>
+
+                    <div class="birthday-date-badge">
+                        <span class="date-icon">🗓️</span>
+                        <span class="date-text">26 October 2026</span>
+                    </div>
+
+                    <p class="reveal-quote">
+                        "Today isn't just another ordinary day on the calendar...<br>
+                        It is the day someone radiant, genuine, and deeply treasured was brought into this world."
+                    </p>
+
+                    <div class="cta-action-area">
+                        <button class="btn-primary" id="btnRevealNext">
+                            <span>A Little More...</span>
+                            <span class="btn-arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ---------------------------------------------------------------- -->
+            <!-- PAGE 3 — OUR STORY                                               -->
+            <!-- ---------------------------------------------------------------- -->
+            <section class="scene scene-3" id="scene-3" data-scene="3" aria-label="Page 3: Our Story" inert>
+                <div class="scene-inner story-container">
+                    <div class="scene-header">
+                        <p class="eyebrow-tag">FROM SCHOOL DAYS TO FOREVER</p>
+                        <h2 class="scene-title">Our Story & Friendship Journey</h2>
+                    </div>
+
+                    <!-- Interactive Era Milestone Switcher -->
+                    <div class="story-tabs-nav" role="tablist" aria-label="Friendship milestones">
+                        <button class="story-tab active" data-story="1" role="tab" aria-selected="true" id="tab-story-1">
+                            <span class="tab-badge">01</span>
+                            <span class="tab-title">Class 3</span>
+                        </button>
+                        <button class="story-tab" data-story="2" role="tab" aria-selected="false" id="tab-story-2">
+                            <span class="tab-badge">02</span>
+                            <span class="tab-title">Class 10</span>
+                        </button>
+                        <button class="story-tab" data-story="3" role="tab" aria-selected="false" id="tab-story-3">
+                            <span class="tab-badge">03</span>
+                            <span class="tab-title">Today</span>
+                        </button>
+                    </div>
+
+                    <!-- Milestone Slides -->
+                    <div class="story-slides-stage">
+                        <!-- Slide 1: Class 3 -->
+                        <div class="story-slide active" data-slide="1" role="tabpanel" aria-labelledby="tab-story-1">
+                            <div class="story-slide-grid">
+                                <div class="story-photo-box polaroid-frame">
+                                    <img src="images/photo2.jpeg" alt="Class 3 Memory" class="story-img" onerror="this.onerror=null; this.src='images/photo1.jpeg';">
+                                    <div class="polaroid-caption">Where It All Began 🎒</div>
+                                </div>
+                                <div class="story-text-box">
+                                    <div class="story-era-pill">Chapter One • Class 3</div>
+                                    <h3 class="story-headline">Where our story began</h3>
+                                    <p class="story-desc">
+                                        Back in Class 3, the world was simple, innocent, and full of carefree laughs. 
+                                        Who would have imagined that two kids sitting in school corridors would start a story 
+                                        that carries so much meaning years down the road?
+                                    </p>
+                                    <div class="story-quote">"Some friendships are quietly destined from the very first bell."</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Class 10 -->
+                        <div class="story-slide" data-slide="2" role="tabpanel" aria-labelledby="tab-story-2">
+                            <div class="story-slide-grid">
+                                <div class="story-photo-box polaroid-frame">
+                                    <img src="images/photo7.jpeg" alt="Class 10 Memory" class="story-img" onerror="this.onerror=null; this.src='images/photo3.jpeg';">
+                                    <div class="polaroid-caption">Reunited in Class 10 🏫</div>
+                                </div>
+                                <div class="story-text-box">
+                                    <div class="story-era-pill">Chapter Two • Class 10</div>
+                                    <h3 class="story-headline">When we met again</h3>
+                                    <p class="story-desc">
+                                        Life has a funny, beautiful way of bringing the right people back together. 
+                                        In Class 10, when our paths crossed again, it felt like no time had passed at all. 
+                                        The shared jokes, the endless banters, and an unspoken comfort made it unforgettable.
+                                    </p>
+                                    <div class="story-quote">"True connection doesn't fade with time—it only grows deeper."</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Today -->
+                        <div class="story-slide" data-slide="3" role="tabpanel" aria-labelledby="tab-story-3">
+                            <div class="story-slide-grid">
+                                <div class="story-photo-box polaroid-frame">
+                                    <img src="images/photo5.jpeg" alt="Today Friendship" class="story-img" onerror="this.onerror=null; this.src='images/photo4.jpeg';">
+                                    <div class="polaroid-caption">Today & Forever ✨</div>
+                                </div>
+                                <div class="story-text-box">
+                                    <div class="story-era-pill">Chapter Three • Present Day</div>
+                                    <h3 class="story-headline">A friendship I truly value</h3>
+                                    <p class="story-desc">
+                                        Today, having you in my life is something I treasure with all my heart. 
+                                        Through every phase of school and beyond, you have remained the most genuine, 
+                                        caring, and incredible person. A friend I am forever lucky to have.
+                                    </p>
+                                    <div class="story-quote">"Friends by chance, an irreplaceable bond by choice."</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Milestone Stepper Controls -->
+                    <div class="story-subnav">
+                        <button class="btn-text-nav" id="btnStoryPrev" aria-label="Previous story chapter">‹ Previous Era</button>
+                        <div class="story-indicators" id="storyIndicators">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <button class="btn-text-nav" id="btnStoryNext" aria-label="Next story chapter">Next Era ›</button>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ---------------------------------------------------------------- -->
+            <!-- PAGE 4 — OUR MEMORIES (Interactive Showcase Gallery)             -->
+            <!-- ---------------------------------------------------------------- -->
+            <section class="scene scene-4" id="scene-4" data-scene="4" aria-label="Page 4: Our Memories" inert>
+                <div class="scene-inner gallery-container">
+                    <div class="scene-header gallery-header">
+                        <p class="eyebrow-tag">PHOTO GALLERY</p>
+                        <h2 class="scene-title">Moments Frozen in Time 📸</h2>
+                    </div>
+
+                    <!-- Featured Photo Card with Ambient Backdrop -->
+                    <div class="gallery-stage" id="galleryStage">
+                        <!-- Ambient blur duplicate -->
+                        <div class="gallery-blur-bg" id="galleryBlurBg" aria-hidden="true"></div>
+
+                        <div class="gallery-card">
+                            <div class="gallery-image-frame">
+                                <img src="images/photo1.jpeg" alt="Manya Memory" id="galleryMainImg" class="gallery-main-img" onerror="this.onerror=null; this.src='images/photo2.jpeg';">
+                                
+                                <div class="gallery-overlay-badge" id="galleryCounterBadge">
+                                    <span id="galleryCurrentIdx">01</span> / <span id="galleryTotalCount">10</span>
+                                </div>
+
+                                <!-- Prev/Next Inside Gallery -->
+                                <button class="gallery-nav-arrow prev" id="galleryBtnPrev" title="Previous photo" aria-label="Previous photograph">
+                                    <span>‹</span>
+                                </button>
+                                <button class="gallery-nav-arrow next" id="galleryBtnNext" title="Next photo" aria-label="Next photograph">
+                                    <span>›</span>
+                                </button>
+                            </div>
+
+                            <div class="gallery-info-bar">
+                                <h3 class="gallery-caption" id="galleryCaption">❤️</h3>
+                                <p class="gallery-subtext" id="gallerySubtext"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Mini Thumbnails Navigation -->
+                    <div class="gallery-thumbs-row" id="galleryThumbsRow" role="tablist" aria-label="Select photo">
+                        <!-- Injected via JavaScript for seamless photo updates -->
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ---------------------------------------------------------------- -->
+            <!-- PAGE 5 — A LETTER FOR YOU                                        -->
+            <!-- ---------------------------------------------------------------- -->
+            <section class="scene scene-5" id="scene-5" data-scene="5" aria-label="Page 5: A Letter for You" inert>
+                <div class="scene-inner letter-scene-container">
+                    
+                    <!-- INITIAL ENVELOPE STATE -->
+                    <div class="envelope-wrapper" id="envelopeWrapper">
+                        <div class="envelope-card" id="envelopeCard">
+                            <div class="envelope-back"></div>
+                            <div class="envelope-pocket"></div>
+                            <div class="envelope-flap" id="envelopeFlap"></div>
+                            
+                            <!-- Letter peek -->
+                            <div class="letter-peek">
+                                <div class="peek-line"></div>
+                                <div class="peek-line short"></div>
+                            </div>
+
+                            <button class="envelope-seal-btn" id="btnOpenLetter" aria-label="Open Letter for Manya">
+                                <span class="seal-icon">✉️</span>
+                                <span class="seal-text">Open Letter</span>
+                            </button>
+                        </div>
+                        <p class="envelope-hint">A handwritten letter straight from the heart</p>
+                    </div>
+
+                    <!-- REVEALED LETTER PARCHMENT (Step-by-step paragraphs, 0 overflow) -->
+                    <div class="letter-revealed-wrapper hidden" id="letterRevealedWrapper" aria-hidden="true">
+                        <div class="parchment-sheet">
+                            <div class="parchment-gold-border">
+                                <div class="parchment-header">
+                                    <span class="parchment-date">26 October 2026</span>
+                                    <h3 class="parchment-salutation">Dearest Manya,</h3>
+                                    <div class="parchment-header-divider"></div>
+                                </div>
+
+                                <!-- Stepper Paragraph Container -->
+                                <div class="letter-body-stepper" id="letterBodyStepper">
+                                    <div class="letter-para active" data-para="1">
+                                        <p>
+                                            Happy Birthday, Manya! Writing this letter brings back a flood of memories—from 
+                                            our very first days in <strong>Class 3</strong>, where everything was simple and playful, 
+                                            all the way to the present day. When I look back, I realize how rare and precious it is to 
+                                            have someone in your life whose presence feels so natural and comforting.
+                                        </p>
+                                    </div>
+
+                                    <div class="letter-para" data-para="2">
+                                        <p>
+                                            When we met again in <strong>Class 10</strong>, it felt like destiny doing its finest work. 
+                                            The laughter, the corridors, the silly jokes, and the everyday moments we shared turned an 
+                                            ordinary school year into memories I will hold onto for a lifetime. With you, conversations 
+                                            were always effortless and genuine.
+                                        </p>
+                                    </div>
+
+                                    <div class="letter-para" data-para="3">
+                                        <p>
+                                            Today, I want you to know how deeply I respect and value you as a friend. In a world where 
+                                            people come and go, you have remained kind, strong, hilarious, and warm-hearted. Having you 
+                                            as my friend is a blessing I will never take for granted.
+                                        </p>
+                                    </div>
+
+                                    <div class="letter-para" data-para="4">
+                                        <p>
+                                            On your birthday, I pray that this upcoming year gives you everything you deserve: immense success, 
+                                            peace of mind, boundless happiness, and dreams fulfilled. Keep smiling that bright smile, because it 
+                                            genuinely lights up the lives of everyone lucky enough to know you.
+                                        </p>
+                                        <div class="letter-signature-block">
+                                            <span class="signature-salute">With all my heart & warmest wishes,</span>
+                                            <span class="signature-name" contenteditable="true" title="Click to edit signature">Anand ✍️</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Letter Stepper Controls -->
+                                <div class="parchment-footer">
+                                    <div class="letter-pagination">
+                                        <button class="btn-letter-nav" id="btnLetterPrev" aria-label="Previous paragraph">‹ Previous</button>
+                                        <span class="letter-page-status" id="letterPageStatus">Part 1 of 4</span>
+                                        <button class="btn-letter-nav" id="btnLetterNext" aria-label="Next paragraph">Next ›</button>
+                                    </div>
+
+                                    <div class="letter-actions">
+                                        <button class="btn-read-all" id="btnOpenReadAllModal" aria-label="Read complete letter">
+                                            <span>📜 Read All</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- ---------------------------------------------------------------- -->
+            <!-- PAGE 6 — THE HAPPY BIRTHDAY WALL                                 -->
+            <!-- ---------------------------------------------------------------- -->
+            <section class="scene scene-6" id="scene-6" data-scene="6" aria-label="Page 6: The Happy Birthday Wall" inert>
+                <div class="scene-inner birthday-wall-stage">
+                    
+                    <!-- Decorative Floating Background Balloons and Confetti -->
+                    <div class="wall-floating-accents" aria-hidden="true">
+                        <span class="balloon b1">🎈</span>
+                        <span class="balloon b2">🎈</span>
+                        <span class="balloon b3">💖</span>
+                        <span class="balloon b4">✨</span>
+                        <span class="balloon b5">⭐</span>
+                    </div>
+
+                    <!-- Surrounding Selected Photographs Collage (Fitted without crowding) -->
+                    <div class="wall-photos-wrapper" aria-hidden="true">
+                        <div class="wall-photo-frame wp-top-left" title="Manya">
+                            <img src="images/photo1.jpeg" alt="Memory" onerror="this.onerror=null; this.src='images/photo3.jpeg';">
+                        </div>
+                        <div class="wall-photo-frame wp-top-right" title="Manya">
+                            <img src="images/photo3.jpeg" alt="Memory" onerror="this.onerror=null; this.src='images/photo5.jpeg';">
+                        </div>
+                        <div class="wall-photo-frame wp-bottom-left" title="Manya">
+                            <img src="images/photo8.jpeg" alt="Memory" onerror="this.onerror=null; this.src='images/photo7.jpeg';">
+                        </div>
+                        <div class="wall-photo-frame wp-bottom-right" title="Manya">
+                            <img src="images/photo5.jpeg" alt="Memory" onerror="this.onerror=null; this.src='images/photo9.jpeg';">
+                        </div>
+                    </div>
+
+                    <!-- Center Showcase Stage -->
+                    <div class="wall-center-content">
+                        <div class="wall-sparkle-crown">👑 ✨ 💖</div>
+
+                        <h1 class="wall-grand-heading">
+                            HAPPY BIRTHDAY<br>
+                            <span class="wall-name-highlight">MANYA</span>
+                        </h1>
+
+                        <!-- Glowing Birthday Cake with Animated Candles -->
+                        <div class="interactive-cake-wrapper" id="cakeWrapper" role="button" tabindex="0" title="Click to blow out candles!" aria-label="Birthday Cake with animated candles. Tap to blow candles!">
+                            <div class="candle-flames" id="candleFlames">
+                                <span class="flame f1">🔥</span>
+                                <span class="flame f2">🔥</span>
+                                <span class="flame f3">🔥</span>
+                            </div>
+                            <div class="cake-icon">🎂</div>
+                            <div class="cake-glow-aura"></div>
+                            <div class="cake-hint" id="cakeHint">✨ Tap cake to blow candles ✨</div>
+                        </div>
+
+                        <!-- Elegant Birthday Wish -->
+                        <p class="wall-wish-message">
+                            "May your year be as extraordinary, bright, and delightful as the laughter you give to the world.
+                            Wishing you endless sunshine, great heights, and unforgettable adventures!"
+                        </p>
+
+                        <!-- "Make a Wish" Action Button -->
+                        <div class="wall-actions">
+                            <button class="btn-make-wish" id="btnMakeWish">
+                                <span class="wish-star">✨</span>
+                                <span>Make a Wish ✨</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- ---------------------------------------------------------------- -->
+            <!-- PAGE 7 — THE FINAL MESSAGE                                       -->
+            <!-- ---------------------------------------------------------------- -->
+            <section class="scene scene-7" id="scene-7" data-scene="7" aria-label="Page 7: The Final Message" inert>
+                <div class="scene-inner final-message-container">
+                    
+                    <div class="final-featured-photo-box">
+                        <div class="final-photo-border">
+                            <img src="images/photo1.jpeg" alt="Manya Gupta Featured" class="final-featured-img" onerror="this.onerror=null; this.src='images/photo10.jpeg';">
+                        </div>
+                    </div>
+
+                    <div class="final-text-content">
+                        <p class="final-eyebrow">A HEARTFELT NOTE</p>
+                        
+                        <blockquote class="final-quote-primary">
+                            "Manya, from Class 3 to all the way to today, I am grateful."
+                        </blockquote>
+
+                        <p class="final-quote-secondary">
+                            "May upcoming days gives you more memories, happiness, growth and everything you wanted So, God bless you.."
+                        </p>
+
+                        <h2 class="final-salute">
+                            Happy Birthday, <span class="final-name">Manya Gupta.</span>
+                        </h2>
+
+                        <!-- Editable Signature -->
+                        <div class="editable-signature-wrap">
+                            <span class="sig-prefix">— Always your friend,</span>
+                            <span class="sig-name" id="editableSig" contenteditable="true" spellcheck="false" title="Click to edit your signature">Anand 🤝❤️</span>
+                        </div>
+
+                        <!-- Final Action Controls Required by User -->
+                        <div class="final-action-buttons">
+                            <button class="btn-final-action" id="btnFinalReadLetter">
+                                <span class="action-icon">📖</span>
+                                <span>Read the Letter Again</span>
+                            </button>
+
+                            <button class="btn-final-action" id="btnFinalMemories">
+                                <span class="action-icon">📸</span>
+                                <span>Revisit Our Memories</span>
+                            </button>
+
+                            <button class="btn-final-action restart-highlight" id="btnFinalReplay">
+                                <span class="action-icon">↺</span>
+                                <span>Replay the Surprise</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+
+        <!-- ================= PERSISTENT BOTTOM NAVIGATION DOCK ================= -->
+        <footer class="bottom-nav" aria-label="Page navigation">
+            <div class="nav-dock">
+                <!-- Back Button (Hidden on Scene 1) -->
+                <button class="nav-pill-btn nav-back" id="navBtnBack" aria-label="Go to previous page" style="visibility: hidden;">
+                    <span class="nav-arrow">←</span>
+                    <span class="nav-text">Back</span>
+                </button>
+
+                <!-- Page Progress Dots -->
+                <div class="nav-dots" id="navDotsContainer" role="tablist" aria-label="Page navigation dots">
+                    <button class="nav-dot active" data-target="1" role="tab" aria-selected="true" title="Page 1: The Secret Invitation"></button>
+                    <button class="nav-dot" data-target="2" role="tab" aria-selected="false" title="Page 2: The Birthday Reveal"></button>
+                    <button class="nav-dot" data-target="3" role="tab" aria-selected="false" title="Page 3: Our Story"></button>
+                    <button class="nav-dot" data-target="4" role="tab" aria-selected="false" title="Page 4: Our Memories"></button>
+                    <button class="nav-dot" data-target="5" role="tab" aria-selected="false" title="Page 5: A Letter for You"></button>
+                    <button class="nav-dot" data-target="6" role="tab" aria-selected="false" title="Page 6: The Happy Birthday Wall"></button>
+                    <button class="nav-dot" data-target="7" role="tab" aria-selected="false" title="Page 7: The Final Message"></button>
+                </div>
+
+                <!-- Next Button -->
+                <button class="nav-pill-btn nav-next" id="navBtnNext" aria-label="Go to next page">
+                    <span class="nav-text" id="navNextText">Next</span>
+                    <span class="nav-arrow">→</span>
+                </button>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- ================= FULL-SCREEN "READ ALL" LETTER MODAL ================= -->
+    <div class="fullscreen-modal" id="letterModal" role="dialog" aria-modal="true" aria-label="Complete Birthday Letter for Manya" inert>
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-dialog parchment-dialog">
+            <button class="modal-close-btn" id="btnCloseLetterModal" aria-label="Close letter modal">✕</button>
+            
+            <div class="modal-dialog-inner">
+                <div class="modal-parchment-header">
+                    <p class="modal-date">26 October 2026</p>
+                    <h2 class="modal-heading">Dearest Manya,</h2>
+                    <div class="parchment-header-divider"></div>
+                </div>
+
+                <div class="modal-parchment-content">
+                    <p>
+                        Happy Birthday, Manya! Writing this letter brings back a flood of memories—from 
+                        our very first days in <strong>Class 3</strong>, where everything was simple, pure, and playful, 
+                        all the way to the present day. When I look back, I realize how rare and precious it is to 
+                        have someone in your life whose presence feels so natural and comforting.
+                    </p>
+                    <p>
+                        When we met again in <strong>Class 10</strong>, it felt like destiny doing its finest work. 
+                        The laughter, the corridors, the silly jokes, and the everyday moments we shared turned an 
+                        ordinary school year into memories I will hold onto for a lifetime. With you, conversations 
+                        were always effortless, genuine, and full of warmth.
+                    </p>
+                    <p>
+                        Today, I want you to know how deeply I respect and value you as a friend. In a world where 
+                        people come and go, you have remained kind, strong, hilarious, and warm-hearted. Having you 
+                        as my friend is a blessing I will never take for granted.
+                    </p>
+                    <p>
+                        On your birthday, I pray that this upcoming year gives you everything you deserve: immense success, 
+                        peace of mind, boundless happiness, and dreams fulfilled. Keep smiling that bright smile, because it 
+                        genuinely lights up the lives of everyone lucky enough to know you.
+                    </p>
+                    <div class="modal-signature-block">
+                        <p class="modal-sig-text">— With all my heart & warmest wishes,</p>
+                        <p class="modal-sig-name">Anand 🤝❤️</p>
+                    </div>
+                </div>
+
+                <div class="modal-footer-actions">
+                    <button class="btn-primary" id="btnModalCloseAction">Close Letter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SINGLE SHARED BIRTHDAY AUDIO ELEMENT ================= -->
+    <!-- Priority: checks assets/music/happy-birthday.mp3 then fallback to root happy-birthday.mp3 -->
+    <audio id="sharedBirthdayAudio" preload="auto">
+        <source src="assets/music/happy-birthday.mp3" type="audio/mpeg">
+        <source src="happy-birthday.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
